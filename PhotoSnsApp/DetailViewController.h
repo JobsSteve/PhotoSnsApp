@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DetailViewController.h
 //  PhotoSnsApp
 //
 //  Created by Yuumi Yoshida on 2014/06/27.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
-@interface ViewController : UIViewController
-
+@interface DetailViewController : UIViewController
+@property(strong, nonatomic) Post *post;
 @end
