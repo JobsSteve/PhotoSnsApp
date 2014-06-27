@@ -75,9 +75,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    _post         = [[Post alloc]init];
-    _post.caption = _captionText.text;
-    // TODO _post.photo   = _photoPreviewImage.image;
+    _post = [[Post alloc]init];
+    if (![_captionText.text isEqualToString:PLACE_HOLDER_TEXT]) {
+        _post.caption = _captionText.text;
+    } else {
+        _post.caption = nil;
+    }
+    [_post setImage:_photoPreviewImage.image];
 }
 
 

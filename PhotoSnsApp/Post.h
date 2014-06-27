@@ -16,4 +16,8 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *photoUrl;
 @property (nonatomic, strong) NSString *photoThumbUrl;
+@property (nonatomic, strong) NSString *imageData;
+
+- (void)setImage:(UIImage *)image;
+
 @end

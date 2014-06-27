@@ -34,10 +34,17 @@
 - (void)insertNewPost:(Post *)post
 {
     [_posts insertObject:post atIndex:0];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.collectionView insertItemsAtIndexPaths:@[indexPath]];
-    
+
+    [post remoteCreateAsync:^(NSError *error) {
+        if (error) {
+            NSLog(@"+++ err %@", error);
+        } else {
+            NSLog(@"+++ ok : id=%@", post.remoteID);
+            NSIndexPath *newIndex = [NSIndexPath indexPathForItem:0 inSection:0];
+            [self.collectionView insertItemsAtIndexPaths:@[newIndex]];
+            
+        }
+    }];    
 }
 
 - (void)viewDidLoad
