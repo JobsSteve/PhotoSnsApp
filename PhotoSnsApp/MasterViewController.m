@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "PostViewController.h"
+#import "LoginViewController.h"
 #import "Post.h"
 #import "PhotoCell.h"
 
@@ -23,6 +24,10 @@
     [Post remoteAllAsync:^(NSArray *allRemote, NSError *error) {
         if (error) {
             NSLog(@"error: %@", error.userInfo);
+            if (error.userInfo[NSRErrorResponseBodyKey] &&
+                [(NSString *)error.userInfo[NSRErrorResponseBodyKey] rangeOfString:@"Access denied"].location != NSNotFound) {
+                [self performSegueWithIdentifier:@"Login" sender:self];
+            }
         } else {
             NSLog(@"------- OK");
             _posts = [NSMutableArray arrayWithArray:allRemote];
@@ -97,6 +102,16 @@
 {
     PostViewController *postViewController = [segue sourceViewController];
     [self performSelector:@selector(insertNewPost:) withObject:postViewController.post afterDelay:0.3];
+}
+
+- (IBAction)loginDone:(UIStoryboardSegue *)segue
+{
+    LoginViewController *login = [segue sourceViewController];
+    
+    [NSRConfig defaultConfig].appUsername = login.email;
+    [NSRConfig defaultConfig].appPassword = login.password;
+    
+    [login dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
