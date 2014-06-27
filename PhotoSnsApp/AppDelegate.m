@@ -7,12 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import <NSRails/NSRails.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [NSRConfig defaultConfig].appURL = @"http://localhost:3000";
+    [NSRConfig defaultConfig].appUsername = @"";
+    [NSRConfig defaultConfig].appPassword = @"";
+    [NSRConfig defaultConfig].managesNetworkActivityIndicator = YES;
+
     return YES;
 }
 							

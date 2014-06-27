@@ -19,7 +19,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    _photoImage.image = _post.photo;
+    _photoImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_post.photoUrl]]];;
     _captionText.text = _post.caption;
 }
 

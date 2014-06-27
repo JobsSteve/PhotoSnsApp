@@ -77,7 +77,7 @@
 {
     _post         = [[Post alloc]init];
     _post.caption = _captionText.text;
-    _post.photo   = _photoPreviewImage.image;
+    // TODO _post.photo   = _photoPreviewImage.image;
 }
 
 

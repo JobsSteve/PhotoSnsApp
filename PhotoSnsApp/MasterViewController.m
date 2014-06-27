@@ -20,14 +20,16 @@
 
 - (void)refreshPosts
 {
-    for (int i = 0; i < 3; i++) {
-        Post *post = [[Post alloc]init];
-        post.photo = [UIImage imageNamed:@"constructocat"];
-        post.caption = [NSString stringWithFormat:@"Octcat %d", i + 1];
-        [_posts addObject:post];
-    }
-    [self.collectionView reloadData];
-}
+    [Post remoteAllAsync:^(NSArray *allRemote, NSError *error) {
+        if (error) {
+            NSLog(@"error: %@", error.userInfo);
+        } else {
+            NSLog(@"------- OK");
+            _posts = [NSMutableArray arrayWithArray:allRemote];
+            [self.collectionView reloadData];
+        }
+    }];
+ }
 
 - (void)insertNewPost:(Post *)post
 {
@@ -66,8 +68,8 @@
     Post *post = _posts[indexPath.row];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if (post.photo) {
-        cell.imageView.image = post.photo;
+    if (post.photoThumbUrl) {
+        cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:post.photoThumbUrl]]];
     } else {
         cell.imageView.image = nil;
     }

@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <NSRails/NSRails.h>
 
-@interface Post : NSObject
-@property (nonatomic, strong) UIImage *photo;
+@interface Post : NSRRemoteObject
 @property (nonatomic, strong) NSString *caption;
+
+@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *photoUrl;
+@property (nonatomic, strong) NSString *photoThumbUrl;
 @end
