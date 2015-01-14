@@ -108,8 +108,8 @@
 {
     LoginViewController *login = [segue sourceViewController];
     
-    [NSRConfig defaultConfig].appUsername = login.email;
-    [NSRConfig defaultConfig].appPassword = login.password;
+    [NSRConfig defaultConfig].basicAuthUsername = login.email;
+    [NSRConfig defaultConfig].basicAuthPassword = login.password;
     
     [login dismissViewControllerAnimated:NO completion:nil];
 }

@@ -1,7 +1,7 @@
 PODS:
-  - NSRails (2.1.2):
-    - NSRails/NSRails
-  - NSRails/NSRails (2.1.2)
+  - NSRails (2.2):
+    - NSRails/NSRails (= 2.2)
+  - NSRails/NSRails (2.2)
 
 DEPENDENCIES:
   - NSRails (from `https://github.com/dingbat/nsrails.git`)
@@ -10,7 +10,12 @@ EXTERNAL SOURCES:
   NSRails:
     :git: https://github.com/dingbat/nsrails.git
 
-SPEC CHECKSUMS:
-  NSRails: f7ca6e2b554fe104667c8acb79fdf27ccff71b85
+CHECKOUT OPTIONS:
+  NSRails:
+    :commit: 3fdca7fef90be90224d5a1429329981b9479ee10
+    :git: https://github.com/dingbat/nsrails.git
 
-COCOAPODS: 0.33.1
+SPEC CHECKSUMS:
+  NSRails: b5c5e9e542c6e966b5011d51218a3bee9453069c
+
+COCOAPODS: 0.35.0

@@ -14,9 +14,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [NSRConfig defaultConfig].appURL = @"http://localhost:3000";
-    [NSRConfig defaultConfig].appUsername = @"";
-    [NSRConfig defaultConfig].appPassword = @"";
+    [NSRConfig defaultConfig].rootURL = [NSURL URLWithString:@"http://localhost:3000"];
+    [NSRConfig defaultConfig].basicAuthUsername = @"";
+    [NSRConfig defaultConfig].basicAuthPassword = @"";
     [NSRConfig defaultConfig].managesNetworkActivityIndicator = YES;
 
     return YES;
